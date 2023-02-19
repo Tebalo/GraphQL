@@ -1,3 +1,12 @@
+/**
+ * Not  Real DB
+ * A "fake" database for Node.js that stores data in local JSON files, for
+ * testing and sample applications
+ * 
+ * Usage
+ * Create a DataStore instance specifying in which folder to store the data,
+ * then create a collections for each object type you want to store
+ */
 const { DataStore } = require('notarealdb');
 const store = new DataStore('./data');
 module.exports = {
