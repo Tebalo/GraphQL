@@ -115,3 +115,56 @@ type College{
 }
 # Move faster with powerful developer tools
 GraphQL provides rich developer tools for documentation and testing queries. GraphiQL is an excellent tool which generates documentation of the query and its schema. It also gives a query editor to test GraphQL APIs and intelligent code completion capability while building queries.
+
+# npm start
+# http://localhost:8000/graphiql
+  Set port: const port = process.env.PORT || 8000;
+  File: server.js
+
+# GraphQL - Architecture
+GraphQL is a specification that describes the behaviour of a GraphQL server. It is a set of guideline on how requests and responses should be handled like supported protocols, format of the data that can be accepted by the server, format of the response returned by the serverm etc. The request made by a client to the GraphQL server is called a Query. Another important concept of GraphQL is its transport layer agnostics. It can be used with any available network protocol like TCP, websocket or any other transport layer protocol. It is also neutral to databases, so you can use it with relational or NoSQL databases.
+
+Transport layer
+The transport layer provides a total end-to-end solution for reliable communications. TCP/IP relies on the transport layer to effectively control communications between two hosts. When an IP communication session must begin or end, the transport layer is used to build this connection. The transport layer is the layer at which TCP/IP ports listen. For instance, the standard port which HTTP listens on is TCP Port 80, although HTTP could really run on any TCP port; this is the standard. Again, there is no difference between TCP port 80, 1000, or 50000; any protocol can run it. Standardized port numbers are used to help ease the need to negotiate the port number for well known applications. 
+Link1: https://www.sciencedirect.com/topics/computer-science/transport-layer#:~:text=The%20transport%20layer%20provides%20a,used%20to%20build%20this%20connection.
+Link2: https://www.javatpoint.com/computer-network-transport-layer
+
+
+GraphQL Server can be deployed by using any of the three methods listed below:
+    * GraphQL server with connected database
+    * GraphQL server that integrates existing systems
+    * Hybrid approach
+
+# GraphQL Server with Connected Database
+This architecture has a GraphQL Server with an integrated database and can often be used with new projects. On the receipt of a Query, the server reads the request payload and fetches data from the database. This is called resolving the query. The response returned to the client adheres to the format specified in the official GraphQL specification.
+
+Phone
+              =============={Query}===========>
+ &&                                               GraphQL + Database
+              <=============HTTP POST==========
+desktop
+
+In the above diagram, GraphQL server and the databse are integrated on a single node. The client (deskto/mobile) communicates with GraphQL server over HTTP. The server processes the requests, fetches data from the database and returns it to the client.
+
+# GraphQL Server Integrating Existing Systems
+This approach is helpful for companies which have legacy infrastructure and different APIs. GraphQL can be used to unify microservices, legacy infrastructure and third-party APIs in the existing system.
+
+
+Phone                                                  Legacy system + DB
+              ======={Query}========>                 /
+ &&                                   GraphQL Server /________ Microservice + DB
+              <=======HTTP POST======                \
+desktop                                               \
+                                                        RESTful API + DB
+
+In the above diagram, a GraphQL API acts as an interface between the client and the existing systems. Client applications communicate with the GraphQL server which in turn resolves the query.
+
+# Hybrid Approach
+Finally, we can combine the above two approaches and build a GraphQL server. In this architecture, the GraphQL server will resolve any request that is received. It will either retriece data from connected database or from the integrated APIs. This is represented in the below figure:
+
+Phone                                                       Legacy system + DB
+              ======={Query}========>                      /
+ &&                                   GraphQL Server + DB /________ Microservice + DB
+              <=======HTTP POST======                     \
+desktop                                                    \
+                                                             RESTful API + DB

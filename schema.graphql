@@ -1,3 +1,39 @@
+"""
+ Logical Schema: 
+ Physical Schema:
+ View Schema:
+
+ Difference between Schema and Instance in DBMS
+ 1. Instances:
+    Instances are the collection of information stored at a particular moment.
+    The instances can be changed by certain CRUD operations  as like addition,
+    deletion of data. It may be noted that any search query will not make any
+    kind of changes in the instances
+ 2. Schema:
+    Schema is the overall description of the database. The basic structure of 
+    how the data will be stored in the database is called schema.
+Example:
+Teacher table
+    name: String
+    doj: date
+    dob: date
+Schema                                        | Instance
+----------------------------------------------------------------------------------------------------------
+It is the overall description of the database | it is the collection of information stored in a database 
+                                              | at a particular moment
+----------------------------------------------------------------------------------------------------------                                             
+Schema is same for whole database             | Data in instances can be changed using addition, deletion,
+                                              | updation.
+----------------------------------------------------------------------------------------------------------                                        
+Does not change frequently                    | Changes frequently
+----------------------------------------------------------------------------------------------------------
+Defines the basic structure of the database   | It is the set of information stored at a particular time. 
+i.e how the data will be stored in the DB     |
+https://medium.com/@krishnaregmi/how-to-write-comments-in-a-graphql-schema-to-enhance-auto-generated-documentation-c0047125ea24
+"""
 type Query{
+    """
+    
+    """
     test: String
 }
