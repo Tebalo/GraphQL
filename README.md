@@ -5,7 +5,7 @@ RESTful APIs follow clear and well-structured resource-oriented approach. Howeve
 is not possible to fetch data with a single request. This is where GraphQL comes handy. GraphQL structures data in the form of a graph with its powerful
 query syntax for traversing, retrieving, and modifying.
 
-# Ask for what you want --- and get it
+## Ask for what you want --- and get it
 Send a GraphQL query to your API and get exactly what you need. GraphQL queries always return predictable results. Applications using GraphQL are fast and stable. Unlike Restful services, these applications can restrict data that should be fetched from the server.
 
 The following example will help you understand this better:
@@ -36,7 +36,7 @@ This will return values only for the id and firstname fields. The query will not
     }
 }
 
-# Get many resources in a single request
+## Get many resources in a single request
 GraphQL queries help to smoothly retrieve associated business objects, while typical REST APIs require loading from multiple URLs. GraphQL APIs fetch all the data your application need in a single request. Applications using GraphQL can be quick even on slow mobile network connections.
 
 Let us consider one more business object, College which has the attributes: name and location. The Student business object has an association relationship with College object. If we were to use a REST API in order to fetch the details of students and their college, we will end up making two requests to the server like /api/v1/students and /api/v1/colleges. This will lead to fetching of data with each request. So mobile applications are forced to make multiple calls to the server to get the desired data.
@@ -89,7 +89,7 @@ The output of the above query contains exactly those fields we have requested fo
         ]
     }
 }
-# Describe what's possible with a type system
+## Describe what's possible with a type system
 GraphQL is strongly typed and thw queries are based on fields and their associated data types. If there is type mismatch in a GraphQL query, server applications return clear and helpful error messages. This helps in smooth debugging and easy detection of bugs by client applications. GraphQL also provides client side libraries that can help in reducing explicit data conversion and parsing.
 
 An example of the Student and College data types is given below:
@@ -113,11 +113,11 @@ type College{
     rating: Float
     students: [Student]
 }
-# Move faster with powerful developer tools
+## Move faster with powerful developer tools
 GraphQL provides rich developer tools for documentation and testing queries. GraphiQL is an excellent tool which generates documentation of the query and its schema. It also gives a query editor to test GraphQL APIs and intelligent code completion capability while building queries.
 
-# npm start
-# http://localhost:8000/graphiql
+## npm start
+## http://localhost:8000/graphiql
   Set port: const port = process.env.PORT || 8000;
   File: server.js
 
@@ -135,7 +135,7 @@ GraphQL Server can be deployed by using any of the three methods listed below:
     * GraphQL server that integrates existing systems
     * Hybrid approach
 
-# GraphQL Server with Connected Database
+## GraphQL Server with Connected Database
 This architecture has a GraphQL Server with an integrated database and can often be used with new projects. On the receipt of a Query, the server reads the request payload and fetches data from the database. This is called resolving the query. The response returned to the client adheres to the format specified in the official GraphQL specification.
 
 Phone
@@ -146,7 +146,7 @@ desktop
 
 In the above diagram, GraphQL server and the databse are integrated on a single node. The client (deskto/mobile) communicates with GraphQL server over HTTP. The server processes the requests, fetches data from the database and returns it to the client.
 
-# GraphQL Server Integrating Existing Systems
+## GraphQL Server Integrating Existing Systems
 This approach is helpful for companies which have legacy infrastructure and different APIs. GraphQL can be used to unify microservices, legacy infrastructure and third-party APIs in the existing system.
 
 
@@ -159,7 +159,7 @@ desktop                                               \
 
 In the above diagram, a GraphQL API acts as an interface between the client and the existing systems. Client applications communicate with the GraphQL server which in turn resolves the query.
 
-# Hybrid Approach
+## Hybrid Approach
 Finally, we can combine the above two approaches and build a GraphQL server. In this architecture, the GraphQL server will resolve any request that is received. It will either retriece data from connected database or from the integrated APIs. This is represented in the below figure:
 
 Phone                                                       Legacy system + DB
@@ -168,3 +168,27 @@ Phone                                                       Legacy system + DB
               <=======HTTP POST======                     \
 desktop                                                    \
                                                              RESTful API + DB
+
+# GraphQL - Application Components
+This chapter discusses different GraphQL components and the way they communicate with each other. The entire application components can be distinguished as below:
+   * Server-side components
+   * Client-side components
+
+## Server-side components
+GraphQL server forms the core component on the server side and allows to parse the queries coming from GraphQL client applications. Apollo Server is most commonly used implementation of GraphQL specification. Other server programming components include the following:
+
+### Schema
+A GraphQL schema is at the center of any GraphQL server implementation and describes the functionality available to the clients which connect to it.
+
+### Query
+A GraphQL query is the client application request to retrieve data from database or legacy API's
+
+### Resolver
+Resolver provide the instructions for turning a GraphQL operation into data. They resolve the query to data defining resolver functions.
+
+## Client-side
+### GraphiQL
+Browser based interface for editing and testing GraphQL queries and mutations
+
+### ApolloClient
+Best tool to build GraphQL client applications. Integrates well with all javascript front-end.
