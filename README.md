@@ -192,3 +192,10 @@ Browser based interface for editing and testing GraphQL queries and mutations
 
 ### ApolloClient
 Best tool to build GraphQL client applications. Integrates well with all javascript front-end.
+
+The below diagram shows a CLIENT-SERVER ARCHITECTURE. The web server is built on NodeJS and Express framwork. A request is made to the Appollo GraphQL Server by ReactJS application(built using Apollo Client library) or GraphiQL browser application. The query will be parsed and validated against a schema defined in the server. If the request schema passes the validation, then the associated resolver functions will be executed. The resolver will contain code to fecth data from an API or a database.
+
+ReactJS + Apollo Client<-->Query Parser| Schema |Resolver Function--> DB, RESTAPI
+                                       Apollo Server               
+                                    NodeJS  |  Express   
+
