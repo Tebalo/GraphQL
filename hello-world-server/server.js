@@ -19,9 +19,17 @@ const typeDefinition = gql`
     type Query {
         greeting: String
 }`
-
+/**
+ * Adding a resolver
+ */
 const resolverObject = {
     Query: {
         greeting: () => 'Hello GraphQL From TutorialsPoint !!'
     }
-} 
+}
+
+/**
+ * Bind the schema and the resolver
+ */
+const { makeExecutableSchema } = require('graphql-tools')
+const schema = makeExecutableSchema({ typeDefs: typeDefinition, resolver: resolverObject })
