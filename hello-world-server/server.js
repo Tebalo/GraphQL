@@ -33,3 +33,8 @@ const resolverObject = {
  */
 const { makeExecutableSchema } = require('graphql-tools')
 const schema = makeExecutableSchema({ typeDefs: typeDefinition, resolver: resolverObject })
+
+const { graphqlExpress, graphiqlExpress } = require('apollo-server-express')
+// create routes for graphql and graphical
+app.use('/graphql', graphiqlExpress({ schema }))
+app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphiql' }))
