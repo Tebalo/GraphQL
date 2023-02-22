@@ -15,7 +15,7 @@ app.listen(port, () => console.log(`server is up and running at ${port}`))
  * Language.
  */
 //Adding Type Definitions
-const typeDefinition = gql`
+const typeDefinition = `
     type Query {
         greeting: String
 }`
