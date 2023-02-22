@@ -18,4 +18,10 @@ app.listen(port, () => console.log(`server is up and running at ${port}`))
 const typeDefinition = gql`
     type Query {
         greeting: String
-}`;
+}`
+
+const resolverObject = {
+    Query: {
+        greeting: () => 'Hello GraphQL From TutorialsPoint !!'
+    }
+} 
